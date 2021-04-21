@@ -1,5 +1,7 @@
 # A Simple Explicit Quality Network for Face Recognition
 
+![Face Quality Result](images/face_quality.jpg)
+
 ## Training Data
 
 1. Download [MS1Mv2](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo)
@@ -11,6 +13,7 @@ python generate_file_list.py
 ```
 
 ## Training
+![Training pipeline](images/train.png)
 1. Step 1: set config.py, then run **python train_feature.py**
 ```
 ```

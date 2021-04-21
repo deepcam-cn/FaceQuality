@@ -168,6 +168,8 @@ def train():
 
         # save checkpoints per epoch
         curTime = get_time()
+        if not os.path.exist(config.MODEL_ROOT):
+            os.makedirs(config.MODEL_ROOT)
         torch.save(QUALITY.state_dict(), os.path.join(config.MODEL_ROOT, "Quality_Epoch_{}_Batch_{}_Time_{}_checkpoint.pth".format(epoch + 1, batch, curTime)))
         torch.save(HEAD.state_dict(), os.path.join(config.MODEL_ROOT, "Head_Epoch_{}_Batch_{}_Time_{}_checkpoint.pth".format(epoch + 1, batch, curTime)))
 
