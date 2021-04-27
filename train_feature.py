@@ -68,7 +68,7 @@ def train():
     PRETRAINED_BACKBONE = None
     PRETRAINED_QUALITY = None
 
-    if os.path.isfile(config.PRETRAINED_BACKBONE) and os.path.isfile(config.TEACHER_QUALITY):
+    if os.path.isfile(config.PRETRAINED_BACKBONE) and os.path.isfile(config.PRETRAINED_QUALITY):
         PRETRAINED_BACKBONE = ResNet(num_layers=100, feature_dim=512)
         PRETRAINED_QUALITY = FaceQuality(512 * 7 * 7)
         checkpoint = torch.load(config.PRETRAINED_BACKBONE)
@@ -118,7 +118,7 @@ def train():
     batch = 0
     step = 0
 
-    scheduler = CosineDecayLR(OPTIMIZER, T_max = 10, lr_init = config.BACKBONE_LR, lr_min = 1e-5, warmup = NUM_BATCH_WARM_UP)
+    scheduler = CosineDecayLR(OPTIMIZER, T_max = 10*len(train_loader), lr_init = config.BACKBONE_LR, lr_min = 1e-5, warmup = NUM_BATCH_WARM_UP)
     for epoch in range(config.NUM_EPOCH):
         BACKBONE.train()
         HEAD.train()
@@ -182,7 +182,7 @@ def train():
 
         # save checkpoints per epoch
         curTime = get_time()
-        if not os.path.exist(config.MODEL_ROOT):
+        if not os.path.exists(config.MODEL_ROOT):
             os.makedirs(config.MODEL_ROOT)
         torch.save(BACKBONE.state_dict(), os.path.join(config.MODEL_ROOT, "Backbone_Epoch_{}_Batch_{}_Time_{}_checkpoint.pth".format(epoch + 1, batch, curTime)))
         torch.save(HEAD.state_dict(), os.path.join(config.MODEL_ROOT, "Head_Epoch_{}_Batch_{}_Time_{}_checkpoint.pth".format(epoch + 1, batch, curTime)))

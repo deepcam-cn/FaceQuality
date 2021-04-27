@@ -98,7 +98,7 @@ def train():
     HEAD = nn.DataParallel(HEAD, device_ids = config.HEAD_GPUS, output_device=config.HEAD_GPUS[0])
     HEAD = HEAD.cuda(config.HEAD_GPUS[0])
     BACKBONE.eval()
-    OPTIMIZER = optim.SGD([{'params': QUALITY.parameters(), 'lr': config.QUALITY_LR}, {'params': HEAD.parameters(), 'lr': config.HEAD_LR}], momentum=config.MOMENTUM)
+    OPTIMIZER = optim.SGD([{'params': QUALITY.parameters(), 'lr': config.QUALITY_LR}, {'params': HEAD.parameters(), 'lr': config.QUALITY_LR}], momentum=config.MOMENTUM)
     DISP_FREQ = len(train_loader) // 100
 
     NUM_EPOCH_WARM_UP = config.NUM_EPOCH_WARM_UP
@@ -106,7 +106,7 @@ def train():
     batch = 0
     step = 0
 
-    scheduler = CosineDecayLR(OPTIMIZER, T_max=10, lr_init = config.BACKBONE_LR, lr_min = 1e-5, warmup = NUM_BATCH_WARM_UP)
+    scheduler = CosineDecayLR(OPTIMIZER, T_max=10*len(train_loader), lr_init = config.BACKBONE_LR, lr_min = 1e-5, warmup = NUM_BATCH_WARM_UP)
     for epoch in range(config.NUM_EPOCH):
         HEAD.train()
         QUALITY.train()
@@ -150,7 +150,7 @@ def train():
                 print("=" * 60)
 
             batch += 1 # batch index
-            scheduler.step()
+            scheduler.step(batch)
             if batch % 1000 == 0:
                 print(OPTIMIZER)
         # training statistics per epoch (buffer for visualization)
@@ -168,7 +168,7 @@ def train():
 
         # save checkpoints per epoch
         curTime = get_time()
-        if not os.path.exist(config.MODEL_ROOT):
+        if not os.path.exists(config.MODEL_ROOT):
             os.makedirs(config.MODEL_ROOT)
         torch.save(QUALITY.state_dict(), os.path.join(config.MODEL_ROOT, "Quality_Epoch_{}_Batch_{}_Time_{}_checkpoint.pth".format(epoch + 1, batch, curTime)))
         torch.save(HEAD.state_dict(), os.path.join(config.MODEL_ROOT, "Head_Epoch_{}_Batch_{}_Time_{}_checkpoint.pth".format(epoch + 1, batch, curTime)))

@@ -22,8 +22,8 @@ class Config:
     HEAD_GPUS = [0]
     BACKBONE_GPUS = [1, 2, 3]
 
-    PRETRAINED_BACKBONE = 'backbone_resume.pth'
-    PRETRAINED_QUALITY = 'qulity_resume.pth'
+    PRETRAINED_BACKBONE = 'pretrained_backbone_resume.pth'
+    PRETRAINED_QUALITY = 'pretrained_qulity_resume.pth'
 
     NUM_EPOCH_WARM_UP = 1
     FIXED_BACKBONE_FEATURE = False
