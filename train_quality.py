@@ -106,7 +106,7 @@ def train():
     batch = 0
     step = 0
 
-    scheduler = CosineDecayLR(OPTIMIZER, T_max=10*len(train_loader), lr_init = config.BACKBONE_LR, lr_min = 1e-5, warmup = NUM_BATCH_WARM_UP)
+    scheduler = CosineDecayLR(OPTIMIZER, T_max=10*len(train_loader), lr_init = config.QUALITY_LR, lr_min = 1e-5, warmup = NUM_BATCH_WARM_UP)
     for epoch in range(config.NUM_EPOCH):
         HEAD.train()
         QUALITY.train()

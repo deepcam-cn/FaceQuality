@@ -11,7 +11,7 @@ class Config:
     RGB_MEAN = [0.5, 0.5, 0.5]
     RGB_STD = [0.5, 0.5, 0.5]
     EMBEDDING_SIZE = 512
-    BATCH_SIZE = 900
+    BATCH_SIZE = 5000
     DROP_LAST = True
     BACKBONE_LR = 0.05
     QUALITY_LR = 0.01

@@ -1,6 +1,8 @@
 # A Simple Explicit Quality Network for Face Recognition
 
 ![Face Quality Result](images/face_quality.jpg)
+## Requirements
+- Pytorch 1.8.1
 
 ## Training Data
 
@@ -12,14 +14,47 @@ cd dataset
 python generate_file_list.py
 ```
 
+## Test
+1. Download pretrained [model](https://drive.google.com/drive/folders/1YtSxo5-NuzDY1baV7wQkUxN3ysvwW6Wp?usp=sharing) 
+2. run test_quality.py
+```
+python test_quality.py --backbone backbone.pth --quality quality.path --file test_faces
+```
 ## Training
 ![Training pipeline](images/train.png)
 1. Step 1: set config.py, then run **python train_feature.py**
-```
+```json
+    ...
+    BACKBONE_RESUME_ROOT = ''
+    HEAD_RESUME_ROOT = ''
+    TRAIN_FILES = './dataset/face_train_ms1mv2.txt'
+    BACKBONE_LR = 0.05
+    PRETRAINED_BACKBONE = ''
+    PRETRAINED_QUALITY = ''
+    ...
 ```
 2. Step 2: set config.py, then run **python train_quality.py**
-```
+```json
+    ...
+    BACKBONE_RESUME_ROOT = './backbone_resume.pth'
+    HEAD_RESUME_ROOT = './head_resume.pth'
+    TRAIN_FILES = './dataset/face_train_ms1mv2.txt'
+    BACKBONE_LR = 0.05
+    PRETRAINED_BACKBONE = ''
+    PRETRAINED_QUALITY = ''
+    ...
 ```
 3. Step 3: set config.py, then run **python train_feature.py**
-```
+```json
+    ...
+    BACKBONE_RESUME_ROOT = ''
+    HEAD_RESUME_ROOT = ''
+    TRAIN_FILES = './dataset/face_train_ms1mv2.txt'
+    BACKBONE_LR = 0.05
+    PRETRAINED_BACKBONE = ''
+    PRETRAINED_QUALITY = ''
+
+    PRETRAINED_BACKBONE = 'pretrained_backbone_resume.pth'
+    PRETRAINED_QUALITY = 'pretrained_qulity_resume.pth'
+    ...
 ```
