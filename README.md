@@ -1,6 +1,10 @@
-# A Simple Explicit Quality Network for Face Recognition
+# EQFace: A Simple Explicit Quality Network for Face Recognition
 
 ![Face Quality Result](images/face_quality.jpg)
+
+## License
+The code of EQFace is released under the MIT License. There is no limitation for both academic and commercial usage.
+
 ## Requirements
 - Pytorch 1.8.1
 
