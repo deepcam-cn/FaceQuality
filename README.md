@@ -70,15 +70,14 @@ python test_quality.py --backbone backbone.pth --quality quality.path --file tes
 
 
 ## Citation 
-:bookmark_tabs:
 
 - If you think this work is useful for you, please cite 
  
-@inproceedings{EQFace,
-title = {EQFace: A Simple Explicit Quality Network for Face Recognition},
-author = {Liu, Rushuai and Tan, Weijun},
-booktitle = {CVPRW},
-year = {2021}
-}
+      @inproceedings{EQFace,
+      title = {EQFace: A Simple Explicit Quality Network for Face Recognition},
+      author = {Liu, Rushuai and Tan, Weijun},
+      booktitle = {CVPRW},
+      year = {2021}
+      }
 
 
