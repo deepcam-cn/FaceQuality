@@ -1,5 +1,5 @@
 # EQFace: A Simple Explicit Quality Network for Face Recognition 
-## The first face recognition network that generates explicit face quality online. It enables a lot of applications where face quality is used.  
+### The first face recognition network that generates explicit face quality online. It enables a lot of applications where face quality is used.  
 
 ![Face Quality Result](images/face_quality.jpg)
 
@@ -68,7 +68,7 @@ python test_quality.py --backbone backbone.pth --quality quality.path --file tes
 ![1:1 verification on IJB-B and IJB-C datasets](images/table2.png)
 ![1:N identification on IJB-B and IJB-C datasets](images/table3.png)
 
-##References 
+## References 
 If you think this work is useful for you, please cite 
 @inproceedings{EQFace,
 title = {EQFace: A Simple Explicit Quality Network for Face Recognition},
