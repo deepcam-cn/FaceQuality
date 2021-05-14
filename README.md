@@ -68,8 +68,12 @@ python test_quality.py --backbone backbone.pth --quality quality.path --file tes
 ![1:1 verification on IJB-B and IJB-C datasets](images/table2.png)
 ![1:N identification on IJB-B and IJB-C datasets](images/table3.png)
 
-## References 
-If you think this work is useful for you, please cite 
+
+## Citation 
+:bookmark_tabs:
+
+- If you think this work is useful for you, please cite 
+ 
 @inproceedings{EQFace,
 title = {EQFace: A Simple Explicit Quality Network for Face Recognition},
 author = {Liu, Rushuai and Tan, Weijun},
