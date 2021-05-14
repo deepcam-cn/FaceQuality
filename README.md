@@ -1,4 +1,5 @@
-# EQFace: A Simple Explicit Quality Network for Face Recognition - the first face recognition network that generates explicit face quality online
+# EQFace: A Simple Explicit Quality Network for Face Recognition 
+## The first face recognition network that generates explicit face quality online. It enables a lot of applications where face quality is used.  
 
 ![Face Quality Result](images/face_quality.jpg)
 
